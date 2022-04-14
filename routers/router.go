@@ -2,12 +2,11 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"super_pay/controllers"
+	routers "super_pay/routers/dispatches"
 )
 
 func Route(route *gin.Engine) {
-
-	route.GET("/api", func(context *gin.Context) {
-		context.JSON(200, new(controllers.HelloController).SayHello(context))
-	})
+	route.GET("/api", routers.Hello())
+	route.GET("/user", routers.User())
 }
+
