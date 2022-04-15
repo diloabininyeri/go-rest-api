@@ -15,8 +15,13 @@ func User() func(context *gin.Context) {
 		context.JSON(200, new(controllers.HelloController).SayHello(context))
 	}
 }
-func Balance() func(context *gin.Context) {
+func BalanceGetAll() func(context *gin.Context) {
 	return func(context *gin.Context) {
 		context.JSON(200, new(controllers.BalanceController).GetAll())
+	}
+}
+func BalanceStore() func(context *gin.Context) {
+	return func(context *gin.Context) {
+		context.JSON(200, new(controllers.BalanceController).SaveBalance(context))
 	}
 }

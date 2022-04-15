@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm"
+	"super_pay/database/mysql"
 	"super_pay/models"
 )
 
@@ -17,4 +18,19 @@ func (receiver BalanceController) GetAll() gin.H {
 		"data":    data,
 	}
 	return h
+}
+
+func (receiver BalanceController) SaveBalance(c *gin.Context) gin.H {
+
+	var balanceApi models.BalanceApi
+	err := c.BindJSON(&balanceApi)
+	if err != nil {
+		panic(err)
+	}
+	db := mysql.InitDb()
+	db.Model(balanceApi).Create(&balanceApi)
+	return gin.H{
+		"data": balanceApi,
+	}
+
 }

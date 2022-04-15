@@ -10,6 +10,13 @@ var tableName = "balances"
 type BalanceModel struct {
 }
 
+type BalanceApi struct {
+	ID uint `json:"id" gorm:"primary_key"`
+	//Id     string `json:"id"`
+	UserId int `json:"user_id"`
+	Amount int `json:"amount"`
+}
+
 func (m BalanceModel) GetAll() []BalanceStructure {
 	return getAll()
 }
@@ -22,6 +29,9 @@ type BalanceStructure struct {
 	UpdatedAt time.Time `json:"updated_at"`
 }
 
+func (receiver BalanceApi) TableName() string {
+	return tableName
+}
 func (b BalanceStructure) TableName() string {
 	return tableName
 }

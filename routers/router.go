@@ -8,6 +8,6 @@ import (
 func Route(route *gin.Engine) {
 	route.GET("/api", routers.Hello())
 	route.GET("/user", routers.User())
-	route.GET("/balance", routers.Balance())
+	route.GET("/balance", routers.BalanceGetAll())
+	route.POST("/balance", routers.BalanceStore())
 }
-
