@@ -17,5 +17,5 @@ func ReadEnv(key string) string {
 }
 
 func AppPort() string {
-	return ":" + ReadEnv("PORT")
+	return ":" + ReadEnv("APP_PORT")
 }

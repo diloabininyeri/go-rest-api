@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	r := gin.Default()
-	routers.Route(r)
-	_ = r.Run(helpers.AppPort())
+
+	engine := gin.Default()
+	routers.Route(engine)
+	_ = engine.Run(helpers.AppPort())
 }
