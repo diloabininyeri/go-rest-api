@@ -2,6 +2,6 @@ POST http://localhost:8888/balance
 Content-Type: application/json
 
 {
-  "user_id": 8,
+  "user_id": 9,
   "amount": -158
 }

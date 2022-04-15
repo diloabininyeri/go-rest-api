@@ -3,16 +3,19 @@ package controllers
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"net/http"
 	"super_pay/database/mysql"
 	functions "super_pay/libs"
+	customHttp "super_pay/libs/http"
 	"super_pay/models"
 )
 
 type UserController struct {
 }
 
-func (receiver UserController) FindUserBalance(c *gin.Context) gin.H {
+func (receiver UserController) FindUserBalance(c *gin.Context) customHttp.Response {
 
+	var response customHttp.Response
 	userId := c.Query("user_id")
 	id := functions.StrToInt(userId)
 	var balances []models.BalanceStructure
@@ -20,21 +23,21 @@ func (receiver UserController) FindUserBalance(c *gin.Context) gin.H {
 	db.Find(&balances, "user_id=?", id)
 
 	h := gin.H{
-		"success": true,
-		"data":    balances,
+		"balances": balances,
 	}
-	return h
+	response.Status = http.StatusOK
+	response.Data = h
+	return response
 }
 
-func (receiver UserController) SumBalance(c *gin.Context) gin.H {
+func (receiver UserController) SumBalance(c *gin.Context) customHttp.Response {
 
 	var sum int
+	var response customHttp.Response
 	userId := c.Query("user_id")
 	if len(userId) == 0 {
-		return gin.H{
-			"success": false,
-			"message": "user_id doesnt exits",
-		}
+		response.Status = http.StatusNotFound
+		response.Message = "user_id doesnt exits"
 	}
 
 	id := functions.StrToInt(userId)
@@ -42,17 +45,19 @@ func (receiver UserController) SumBalance(c *gin.Context) gin.H {
 	row := db.Table("balances").Where("user_id = ?", id).Select("sum(amount)").Row()
 	err := row.Scan(&sum)
 	if err != nil {
-		return gin.H{
-			"data":    nil,
-			"success": false,
-			"message": fmt.Sprintf("data not found for user_id=%d", id),
-		}
+		response.Data = nil
+		response.Message = fmt.Sprintf("data not found for user_id=%d", id)
+		response.Status = http.StatusNotFound
+		return response
 	}
 	dataSum := map[string]int{}
-	dataSum["sum"] = sum
+	dataSum["value"] = sum
 	h := gin.H{
 		"success": true,
-		"data":    dataSum,
+		"sum":     dataSum,
 	}
-	return h
+	response.Status = http.StatusOK
+	response.Message = "success"
+	response.Data = h
+	return response
 }

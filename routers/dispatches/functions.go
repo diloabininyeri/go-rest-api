@@ -17,21 +17,26 @@ func User() func(context *gin.Context) {
 }
 func BalanceGetAll() func(context *gin.Context) {
 	return func(context *gin.Context) {
-		context.JSON(200, new(controllers.BalanceController).GetAll())
+		res := new(controllers.BalanceController).GetAll()
+		context.JSON(res.Status, res.Json())
 	}
 }
 func BalanceStore() func(context *gin.Context) {
 	return func(context *gin.Context) {
-		context.JSON(200, new(controllers.BalanceController).SaveBalance(context))
+		response := new(controllers.BalanceController).SaveBalance(context)
+		context.JSON(response.Status, response.Json())
 	}
 }
 func UserBalance() func(context *gin.Context) {
 	return func(context *gin.Context) {
-		context.JSON(200, new(controllers.UserController).FindUserBalance(context))
+		response := new(controllers.UserController).FindUserBalance(context)
+		context.JSON(response.Status, response.Json())
 	}
 }
 func UserSumBalance() func(context *gin.Context) {
 	return func(context *gin.Context) {
-		context.JSON(200, new(controllers.UserController).SumBalance(context))
+
+		response := new(controllers.UserController).SumBalance(context)
+		context.JSON(response.Status, response.Json())
 	}
 }
