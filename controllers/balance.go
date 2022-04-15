@@ -18,7 +18,6 @@ func (receiver BalanceController) GetAll() CustomHttp.Response {
 
 	data := balanceModel.GetAll()
 	h := gin.H{
-		"success":  true,
 		"balances": data,
 	}
 	response.Data = h
@@ -42,6 +41,7 @@ func (receiver BalanceController) SaveBalance(c *gin.Context) CustomHttp.Respons
 		"balance": balanceApi,
 	}
 	response.Data = h
+	response.ReferenceId = balanceApi.ID
 	return response
 
 }

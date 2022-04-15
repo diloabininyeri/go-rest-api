@@ -11,7 +11,8 @@ type BalanceModel struct {
 }
 
 type BalanceApi struct {
-	ID uint `json:"id" gorm:"primary_key"`
+	//ID uint `json:"id" gorm:"primary_key"`
+	ID int `json:"id" gorm:"primary_key"`
 	//Id     string `json:"id"`
 	UserId int `json:"user_id"`
 	Amount int `json:"amount"`
