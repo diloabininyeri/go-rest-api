@@ -10,6 +10,10 @@ var tableName = "balances"
 type BalanceModel struct {
 }
 
+func (m BalanceModel) GetAll() interface{} {
+	return getAll()
+}
+
 type BalanceStructure struct {
 	Id        int       `json:"id"`
 	UserId    int       `json:"user_id"`
@@ -22,7 +26,7 @@ func (b BalanceStructure) TableName() string {
 	return tableName
 }
 
-func GetAll() []BalanceStructure {
+func getAll() []BalanceStructure {
 	var balances []BalanceStructure
 	mysql.InitDb() //for singleton connection you can direct set db variable
 	db := mysql.Db

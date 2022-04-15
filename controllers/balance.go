@@ -10,7 +10,8 @@ type BalanceController struct {
 }
 
 func (receiver BalanceController) GetAll() gin.H {
-	data := models.GetAll()
+	var balanceModel models.BalanceModel
+	data := balanceModel.GetAll()
 	h := gin.H{
 		"success": true,
 		"data":    data,
