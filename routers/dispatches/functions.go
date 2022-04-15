@@ -25,3 +25,8 @@ func BalanceStore() func(context *gin.Context) {
 		context.JSON(200, new(controllers.BalanceController).SaveBalance(context))
 	}
 }
+func UserBalance() func(context *gin.Context) {
+	return func(context *gin.Context) {
+		context.JSON(200, new(controllers.UserController).FindUserBalance(context))
+	}
+}
