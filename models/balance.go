@@ -10,7 +10,7 @@ var tableName = "balances"
 type BalanceModel struct {
 }
 
-func (m BalanceModel) GetAll() interface{} {
+func (m BalanceModel) GetAll() []BalanceStructure {
 	return getAll()
 }
 
