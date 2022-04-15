@@ -30,3 +30,8 @@ func UserBalance() func(context *gin.Context) {
 		context.JSON(200, new(controllers.UserController).FindUserBalance(context))
 	}
 }
+func UserSumBalance() func(context *gin.Context) {
+	return func(context *gin.Context) {
+		context.JSON(200, new(controllers.UserController).SumBalance(context))
+	}
+}

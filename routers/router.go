@@ -11,4 +11,5 @@ func Route(route *gin.Engine) {
 	route.GET("/balance", routers.BalanceGetAll())
 	route.POST("/balance", routers.BalanceStore())
 	route.GET("/user/balance", routers.UserBalance())
+	route.GET("/user/balance/sum", routers.UserSumBalance())
 }
