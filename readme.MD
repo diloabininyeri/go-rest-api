@@ -19,3 +19,8 @@ stop
 ```console
 docker-compose down
 ```
+for run unit-test
+```console
+cd tests
+go test . -v
+```
