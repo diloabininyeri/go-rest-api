@@ -14,7 +14,7 @@ type Response struct {
 func (r Response) Json() gin.H {
 
 	h := gin.H{
-		"sql":          r.Data,
+		"data":         r.Data,
 		"message":      r.Message,
 		"reference_id": r.ReferenceId,
 	}
