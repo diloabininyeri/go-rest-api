@@ -6,7 +6,7 @@ import (
 
 type Response struct {
 	Status      int    `json:"status"`
-	Data        gin.H  `json:"sql"`
+	Data        gin.H  `json:"data"`
 	Message     string `json:"message"`
 	ReferenceId int    `json:"reference_id"`
 }
