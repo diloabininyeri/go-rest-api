@@ -1,9 +1,11 @@
 version: '3.8'
 services:
   api:
+    deploy:
+      replicas: 2
     build: .
     ports:
-      - "${APP_PORT}:${APP_PORT}"
+      - "${APP_PORT}-8889:${APP_PORT}" #for replicate app on ports localhost:8888 and localhost:8889
     depends_on:
       - db
   db:
