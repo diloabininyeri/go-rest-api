@@ -1,18 +1,15 @@
 package tests
 
 import (
-	"fmt"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
 )
 
-func TestFindUserWallet(t *testing.T) {
+func TestGetAllBalances(t *testing.T) {
 
-	var userId int
-	userId = 2
-	urlGet := fmt.Sprintf("%s/user/balance?user_id=%d", GetUrl(), userId)
-	get, err := http.Get(urlGet)
+	url := GetUrl()
+	get, err := http.Get(url)
 	if err != nil {
 		return
 	}
