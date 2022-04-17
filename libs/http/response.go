@@ -6,7 +6,7 @@ import (
 
 type Response struct {
 	Status      int    `json:"status"`
-	Data        gin.H  `json:"data"`
+	Data        gin.H  `json:"sql"`
 	Message     string `json:"message"`
 	ReferenceId int    `json:"reference_id"`
 }
@@ -14,7 +14,7 @@ type Response struct {
 func (r Response) Json() gin.H {
 
 	h := gin.H{
-		"data":         r.Data,
+		"sql":          r.Data,
 		"message":      r.Message,
 		"reference_id": r.ReferenceId,
 	}

@@ -46,7 +46,7 @@ func (receiver UserController) SumBalance(c *gin.Context) customHttp.Response {
 	err := row.Scan(&sum)
 	if err != nil {
 		response.Data = nil
-		response.Message = fmt.Sprintf("data not found for user_id=%d", id)
+		response.Message = fmt.Sprintf("sql not found for user_id=%d", id)
 		response.Status = http.StatusNotFound
 		return response
 	}

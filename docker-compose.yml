@@ -8,8 +8,12 @@ services:
       - db
   db:
     image: mysql
+    command: --init-file /docker-entrypoint-initdb.d/setup.sql
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d/
     environment:
       MYSQL_ROOT_PASSWORD: "${DATABASE_PASSWORD}"
+      MYSQL_DATABASE: "${DATABASE_NAME}"
     ports:
       - "3306:3306"
   phpmyadmin:

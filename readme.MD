@@ -4,3 +4,18 @@
 - Test
 - Mvc Design 
 - Restapi
+
+### let's start
+for build
+```console
+docker-compose up --build
+```
+start
+```console
+docker-compose up
+```
+stop 
+
+```console
+docker-compose down
+```

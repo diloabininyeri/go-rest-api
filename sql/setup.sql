@@ -18,7 +18,8 @@
 --
 -- Table structure for table `balances`
 --
-
+create  database payments;
+use payments;
 DROP TABLE IF EXISTS `balances`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -33,7 +34,7 @@ CREATE TABLE `balances` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `balances`
+-- Dumping sql for table `balances`
 --
 
 LOCK TABLES `balances` WRITE;
