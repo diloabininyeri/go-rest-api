@@ -1,6 +1,7 @@
 package tests
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"net/http"
 	"testing"
@@ -9,7 +10,8 @@ import (
 func TestGetAllBalances(t *testing.T) {
 
 	url := GetUrl()
-	get, err := http.Get(url)
+	getUrl := fmt.Sprintf("%s/balance", url)
+	get, err := http.Get(getUrl)
 	if err != nil {
 		return
 	}
